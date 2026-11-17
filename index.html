@@ -1699,42 +1699,30 @@
         issuesByStep[4].push(`6번 문항 최종 정답 확인 필요`);
       }
 
-      // Q7: deletedSentence ('s2') + addedOption ('a2') + aChoice ('글의 흐름에서 벗어나는') + bChoice ('체험 계기와 관련된 소감을') + final answer ('2') = 5
-      total += 1;
-      const q7DelOk = appState.step4.q7.deletedSentence === `s2`;
-      if (q7DelOk) {
-        earned += 1;
-      } else {
-        issuesByStep[4].push(`7번 문항 초고 6문단 삭제할 문장 선택 확인 필요`);
-      }
-      total += 1;
-      const q7AddOk = appState.step4.q7.addedOption === `a2`;
-      if (q7AddOk) {
-        earned += 1;
-      } else {
-        issuesByStep[4].push(`7번 문항 고친 글 6문단 추가할 문장 선택 확인 필요`);
-      }
-      total += 1;
-      const q7AOk = appState.step4.q7.aChoice === `글의 흐름에서 벗어나는`;
-      if (q7AOk) {
-        earned += 1;
-      } else {
-        issuesByStep[4].push(`7번 문항 ⓐ에 들어갈 표현 선택 확인 필요`);
-      }
-      total += 1;
-      const q7BOk = appState.step4.q7.bChoice === `체험 계기와 관련된 소감을`;
-      if (q7BOk) {
-        earned += 1;
-      } else {
-        issuesByStep[4].push(`7번 문항 ⓑ에 들어갈 표현 선택 확인 필요`);
-      }
-      total += 1;
-      const q7AnsOk = appState.step4.q7.answer === `2`;
-      if (q7AnsOk) {
-        earned += 1;
-      } else {
-        issuesByStep[4].push(`7번 문항 최종 답 확정 확인 필요`);
-      }
+// Q7: deletedSentence ('s2') + addedOption ('a2') + final answer ('2') = 3
+        total += 1;
+        const q7DelOk = appState.step4.q7.deletedSentence === `s2`;
+        if (q7DelOk) {
+            earned += 1;
+        } else {
+            issuesByStep[4].push(`7번 문항 초고 6문단 삭제할 문장 선택 확인 필요`);
+        }
+
+        total += 1;
+        const q7AddOk = appState.step4.q7.addedOption === `a2`;
+        if (q7AddOk) {
+            earned += 1;
+        } else {
+            issuesByStep[4].push(`7번 문항 고친 글 6문단 추가할 문장 선택 확인 필요`);
+        }
+
+        total += 1;
+        const q7AnsOk = appState.step4.q7.answer === `2`;
+        if (q7AnsOk) {
+            earned += 1;
+        } else {
+            issuesByStep[4].push(`7번 문항 최종 답 확정 확인 필요`);
+        }
 
       const accuracy = total > 0 ? Math.round((earned / total) * 100) : 0;
 
@@ -1744,14 +1732,14 @@
         accuracy: accuracy,
         issuesByStep: issuesByStep,
         qFlags: {
-          q1: q1SubOk && q1AnsOk,
-          q2: q2SubOk && q2AnsOk,
-          q3: q3LinksOk && q3AnsOk,
-          q4: q4Stage1Ok && q4AnsOk,
-          q5: q5SubOk && q5AnsOk,
-          q6: q6SubOk && q6AnsOk,
-          q7: q7DelOk && q7AddOk && q7AOk && q7BOk && q7AnsOk
-        }
+                q1: q1SubOk && q1AnsOk,
+                q2: q2SubOk && q2AnsOk,
+                q3: q3LinksOk && q3AnsOk,
+                q4: q4Stage1Ok && q4AnsOk,
+                q5: q5SubOk && q5AnsOk,
+                q6: q6SubOk && q6AnsOk,
+                q7: q7DelOk && q7AddOk && q7AnsOk
+            }
       };
     }
 
